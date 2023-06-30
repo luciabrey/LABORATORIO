@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" type="text/css" href="styles.css">
+    <title>Calculadora</title>
+</head>
+<body>
+    <center>
+        <h1 id="titulo">CALCULADORA</h1>
+        <div id="box-general">
+            <div class="box"><h2 id="text"></h2></div>
+            <div class="box-2">
+                <div id="fila-1">
+                    <div class="num"><button class="num-txt" onclick="agregarNumero(7)">7</button></div>
+                    <div class="num"><button class="num-txt" onclick="agregarNumero(8)">8</button></div>
+                    <div class="num"><button class="num-txt" onclick="agregarNumero(9)">9</button></div>
+                    <div class="num"><button class="num-txt especiales" onclick="borrarUltimo()">DEL</button></div>                
+                </div>
+                <div id="fila-1">
+                    <div class="num"><button class="num-txt" onclick="agregarNumero(4)">4</button></div>
+                    <div class="num"><button class="num-txt" onclick="agregarNumero(5)">5</button></div>
+                    <div class="num"><button class="num-txt" onclick="agregarNumero(6)">6</button></div>
+                    <div class="num"><button class="num-txt" onclick="agregarOperador('+')">+</button></div>                
+                </div>
+                <div id="fila-1">
+                    <div class="num"><button class="num-txt" onclick="agregarNumero(1)">1</button></div>
+                    <div class="num"><button class="num-txt" onclick="agregarNumero(2)">2</button></div>
+                    <div class="num"><button class="num-txt" onclick="agregarNumero(3)">3</button></div>
+                    <div class="num"><button class="num-txt" onclick="agregarOperador('-')">-</button></div>                
+                </div>
+                <div id="fila-1">
+                    <div class="num"><button class="num-txt" onclick="agregarPunto()">.</button></div>
+                    <div class="num"><button class="num-txt" onclick="agregarNumero(0)">0</button></div>
+                    <div class="num"><button class="num-txt" onclick="agregarOperador('/')">/</button></div>
+                    <div class="num"><button class="num-txt" onclick="agregarOperador('*')">X</button></div>                
+                </div>
+                <div id="fila-1">
+                    <div class="num"><button class="num-txt especiales grandes" onclick="resetear()">RESET</button></div>
+                    <div class="num"><button class="num-txt igual" onclick="calcular()">=</button></div>         
+                </div>
+            </div>
+        </div>
+    </center>
+    <script>
+        // Variables
+        let operando1 = '';
+        let operando2 = '';
+        let operador = '';
+
+        function actualizarTexto(resultado) {
+            const textoElemento = document.getElementById('text');
+            if (resultado !== null && resultado !== undefined) {
+                textoElemento.innerText = resultado;
+            } else {
+                textoElemento.innerText = operando1 + ' ' + operador + ' ' + operando2;
+            }
+        }
+
+        // Función para agregar un número al operando actual
+        function agregarNumero(numero) {
+            if (operador === '') {
+                operando1 += numero;
+            } else {
+                operando2 += numero;
+            }
+            actualizarTexto();
+        }
+
+        // Función para agregar un operador
+        function agregarOperador(op) {
+            operador = op;
+            actualizarTexto();
+        }
+
+        // Función para agregar un punto decimal al operando actual
+        function agregarPunto() {
+            if (operador === '') {
+                if (!operando1.includes('.')) {
+                    operando1 += '.';
+                }
+            } else {
+                if (!operando2.includes('.')) {
+                    operando2 += '.';
+                }
+            }
+            actualizarTexto();
+        }
+
+        // Función para borrar el último carácter del operando actual
+        function borrarUltimo() {
+            if (operador === '') {
+                operando1 = operando1.slice(0, -1);
+            } else {
+                operando2 = operando2.slice(0, -1);
+            }
+            actualizarTexto();
+        }
+
+        // Función para resetear los valores
+        function resetear() {
+            operando1 = '';
+            operando2 = '';
+            operador = '';
+            actualizarTexto();
+        }
+
+        // Función para realizar el cálculo y mostrar el resultado
+        function calcular() {
+            let resultado = '';
+            if (operando1 !== '' && operando2 !== '' && operador !== '') {
+                const num1 = parseFloat(operando1);
+                const num2 = parseFloat(operando2);
+                switch (operador) {
+                    case '+':
+                        resultado = num1 + num2;
+                        break;
+                    case '-':
+                        resultado = num1 - num2;
+                        break;
+                    case '*':
+                        resultado = num1 * num2;
+                        break;
+                    case '/':
+                        resultado = num1 / num2;
+                        break;
+                    default:
+                        resultado = '';
+                        break;
+                }
+                resetear();
+                actualizarTexto(resultado);
+            }
+        }
+    </script>
+</body>
+    <!-- (A.A.C.H) La primera letra de los apellidos Aizcorbe, Avila, Carratu y Heuchert --> 
+    <div class="copy"><p> Copyright © 2023 -A.A.C.H-</p></div>
+</html>

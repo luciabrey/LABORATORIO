@@ -1,0 +1,94 @@
+*{
+    padding: 0;
+    margin: 0;
+}
+
+button{
+    border: none;
+}
+@font-face {
+    font-family: 'fuente';
+    src: url("GoboldThin.otf");
+}
+
+#text{
+
+    color: white;
+    font-size: 50px;
+}
+body{
+    font-family: fuente;
+    margin: 200px;
+    background-color: #3b4664;
+}
+
+#titulo{
+    color: white;
+    font-size: 100px;
+}
+
+#box-general{
+    width: 600px;
+    height: 100%;
+    padding: 150px;
+}
+
+.box{
+    display: flex;
+    height: 150px;
+    align-items: center;
+    justify-content: center;
+    background-color: #191f32;
+    border-radius: 20px;
+}
+.box-2{
+    margin-top: 20px;
+    padding: 20px;
+    border-radius: 20px;
+    background-color: #252d46;
+}
+.num-txt.especiales{
+    background-color: #647297;
+    box-shadow: 0px 4px rgba(117, 122, 189, 0.5);
+    color: white;
+}
+.num-txt.especiales.grandes{
+    width: 250px;
+}
+.num-txt.igual{
+    background-color: #d13f30;
+    box-shadow: 0px 4px rgba(226, 71, 71, 0.5);
+    width: 250px;
+    color: white;
+}
+
+.num-txt{
+    background-color: #e9e3dc;
+    color: #53535e;
+    width: 100px;
+    height: 70px;
+    margin: 10px;
+    border-radius: 8px;
+    font-size: 35px;
+
+    display: grid;
+    place-content: center;
+    box-shadow: 0px 4px rgba(180, 180, 180, 0.5);
+}
+.num-txt:hover {
+    color: black !important;
+    box-shadow: 0 4px 16px rgb(177, 177, 177);
+    font-size: 37px;
+    transition: all 0.2s ease;
+  }
+#fila-1{
+    display: flex;
+    justify-content: space-around;
+}
+
+.copy{
+    display: flex;
+    align-content : center;
+    justify-content: center;
+    font-size: 25px;
+}
